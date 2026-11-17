@@ -70,6 +70,30 @@
           </table>
         </div>
       </section>
+
+      <section class="panel">
+        <div class="panel__head">
+          <h2>Reveal, then tour</h2>
+          <button type="button" id="start-reveal-tour">Start tour</button>
+        </div>
+        <div id="orders-stage" class="stage invoices">
+          <div class="toolbar">
+            <input id="orders-search" type="search" placeholder="Search orders" aria-label="Search orders" data-build />
+            <button type="button" id="orders-filter" data-build="type">Last 7 days</button>
+            <button type="button" id="orders-export" data-build="type">Export</button>
+          </div>
+          <table id="orders-table" class="invoice-table">
+            <thead>
+              <tr data-build><th>Order</th><th>Customer</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr data-build><td>ORD-5521</td><td>Northwind</td><td>Shipped</td></tr>
+              <tr data-build><td>ORD-5520</td><td>Contoso</td><td>Packing</td></tr>
+              <tr data-build><td>ORD-5519</td><td>Fabrikam</td><td>Delivered</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </main>
 
     <script type="module" src="./main.ts"></script>

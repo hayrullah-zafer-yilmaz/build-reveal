@@ -82,6 +82,24 @@ createTour(steps, {
 });
 ```
 
+## After a reveal animation
+
+To build the screen with a [reveal](getting-started.md) first and then show users around, start the tour when the reveal completes:
+
+```js
+import { createBuildReveal } from 'build-reveal';
+import { createTour } from 'build-reveal/tour';
+
+const tour = createTour(steps);
+const reveal = createBuildReveal(stage, { onComplete: () => tour.start() });
+
+if (reveal.phase === 'idle') tour.start();
+```
+
+The last line matters: when the user prefers reduced motion, the reveal is skipped, its phase stays `'idle'` and `onComplete` is never called.
+
+To start the tour from a button instead, check the reveal's phase: if it is still `'pending'`, call `reveal.play()` and start the tour in `onComplete`; otherwise start the tour right away. The "Reveal, then tour" panel of the [live demo](https://hayrullah-zafer-yilmaz.github.io/build-reveal/) works that way.
+
 ## Translating
 
 ```js
@@ -189,4 +207,4 @@ On screens narrower than 640 pixels, the panel spans the bottom of the screen. T
 - During very fast scrolling, the frame can trail its target by a frame.
 - Your app's own modal dialogs can sit above the tour. Tours inside modal dialogs aren't supported yet.
 - In fields with a floating label driven by `:placeholder-shown`, the typed text can overlap the label.
-- Let a reveal animation finish before starting a tour: clicking the tour panel ends a running reveal.
+- Let a reveal animation finish before starting a tour, as shown in [After a reveal animation](#after-a-reveal-animation): clicking the tour panel ends a running reveal.

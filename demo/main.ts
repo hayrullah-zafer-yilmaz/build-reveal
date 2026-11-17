@@ -45,3 +45,37 @@ const tour = createTour(
 );
 
 document.querySelector('#start-tour')!.addEventListener('click', () => tour.start());
+
+const ordersTour = createTour(
+  [
+    { target: '#orders-search', caption: 'Look up an order by number or customer.', type: 'ORD-5521' },
+    { target: '#orders-filter', caption: 'Show only the orders of the last 7 days.', click: true },
+    { target: '#orders-table tbody tr', caption: 'Each row shows where the order is.' },
+    { target: '#orders-export', caption: 'Export the orders as a spreadsheet.', click: true }
+  ],
+  { cursor: { label: 'Guide' } }
+);
+
+let tourAfterReveal = false;
+
+function startOrdersTour() {
+  tourAfterReveal = false;
+  ordersTour.start();
+}
+
+const orders = createBuildReveal(document.querySelector<HTMLElement>('#orders-stage')!, {
+  cursors: [{ label: 'Ada' }, { label: 'Linus' }],
+  onComplete: () => {
+    if (tourAfterReveal) startOrdersTour();
+  }
+});
+
+document.querySelector('#start-reveal-tour')!.addEventListener('click', () => {
+  if (ordersTour.active) return;
+  if (orders.phase !== 'pending') {
+    startOrdersTour();
+    return;
+  }
+  tourAfterReveal = true;
+  void orders.play();
+});
