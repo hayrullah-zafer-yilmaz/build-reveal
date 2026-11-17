@@ -12,9 +12,9 @@ npm install build-reveal
 Without a build step, load the script from a CDN. Pin the version so that a new release never surprises you:
 
 ```html
-<script src="https://unpkg.com/build-reveal@0.1"></script>
+<script src="https://unpkg.com/build-reveal@0.2"></script>
 <!-- or -->
-<script src="https://cdn.jsdelivr.net/npm/build-reveal@0.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/build-reveal@0.2"></script>
 ```
 
 The script registers the `<build-reveal>` element and puts everything else on `window.BuildReveal`. You can also copy `node_modules/build-reveal/dist/build-reveal.global.js` into your project and serve it yourself.
@@ -56,7 +56,7 @@ A complete HTML page:
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <script src="https://unpkg.com/build-reveal@0.1"></script>
+    <script src="https://unpkg.com/build-reveal@0.2"></script>
   </head>
   <body>
     <build-reveal>

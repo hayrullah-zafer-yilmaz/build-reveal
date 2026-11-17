@@ -17,7 +17,8 @@ Sayfanız bir tasarım aracında canlı olarak hazırlanıyormuş gibi görüns�
 - **Tek attribute**: görünmesini istediğiniz öğelere `data-build` eklemeniz yeterli. Ayar gerekmez.
 - **Araya girmez**: içerik ekrana girince oynar, üstü kapalıysa bekler, kullanıcı etkileşime geçtiği anda durur.
 - **Erişilebilir**: sistemdeki "hareketi azalt" ayarına uyar, içeriği hiçbir zaman gizli bırakmaz ve tek satırla tamamen kapatılabilir.
-- **Küçük**: tek script olarak yaklaşık 9 KB (gzip).
+- **Rehberli turlar**: aynı imleç, kullanıcılarınızı gerçek arayüzünüzde adım adım gezdirebilir.
+- **Küçük**: bağımlılık yok; açılış animasyonu yaklaşık 8 KB, turlar 10 KB (gzip).
 
 ## Kurulum
 
@@ -28,7 +29,7 @@ npm install build-reveal
 Ya da build adımı olmadan CDN'den yükleyin:
 
 ```html
-<script src="https://unpkg.com/build-reveal@0.1"></script>
+<script src="https://unpkg.com/build-reveal@0.2"></script>
 ```
 
 ## Hızlı başlangıç
@@ -113,10 +114,32 @@ Animasyonu kodla da yönetebilirsiniz: `play()` yeniden oynatır, `finish()` hem
 - **Durur** ve her şeyi gösterir: kullanıcı tıkladığı, dokunduğu, bir tuşa bastığı, odağı stage'in içine taşıdığı ya da stage'i ekrandan çıkardığı anda. Dokunmatik ekranda kaydırmak animasyonu durdurmaz.
 - **Atlanır**: kullanıcı sisteminde "hareketi azalt" ayarını açtıysa. Bu durumda hiçbir şey gizlenmez.
 
+## Rehberli turlar
+
+Aynı imleç, kullanıcılarınıza gerçek arayüzünüzü tanıtabilir. Her öğenin etrafına çerçeve çizer, bir açıklamayla anlatır ve tıklamayı ya da yazmayı canlandırır; uygulamanıza hiçbir şekilde dokunmaz:
+
+```js
+import { createTour } from 'build-reveal/tour';
+
+const tour = createTour(
+  [
+    { target: '#search', caption: 'Önce aradığınız faturayı yazın.', type: 'Fatura 2026' },
+    { target: '#filter', caption: 'Sonra listeyi tarihe göre filtreleyin.', click: true },
+    { target: '#export', caption: 'Buradan Excel olarak indirebilirsiniz.' }
+  ],
+  { labels: { next: 'İleri', back: 'Geri', done: 'Bitti', close: 'Turu kapat', tour: 'Rehberli tur' } }
+);
+
+tour.start();
+```
+
+Kullanıcı turda İleri, Geri ve Kapat butonlarıyla ya da klavyeyle ilerler. Ayrıntılar için [Rehberli turlar](tour.md) (İngilizce).
+
 ## Dokümantasyon (İngilizce)
 
 - [Başlangıç](getting-started.md)
 - [İçeriği işaretleme](markup.md)
+- [Rehberli turlar](tour.md)
 - Framework'ler: [JavaScript](frameworks/vanilla.md) · [Web Component](frameworks/web-component.md) · [React ve Next.js](frameworks/react.md) · [Vue ve Nuxt](frameworks/vue.md) · [Angular](frameworks/angular.md) · [Svelte](frameworks/svelte.md)
 - [API referansı](api.md)
 - [Tema ve renkler](theming.md)

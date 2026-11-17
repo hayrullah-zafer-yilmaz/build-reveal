@@ -1,3 +1,11 @@
+import {
+  clippingAncestorsOf,
+  clipsContent,
+  intersectionOf,
+  unionOf,
+  type Edges
+} from './geometry';
+import { MAX_FRAME_GAP_MS, MIN_SPEED, REDUCED_MOTION_QUERY } from './motion';
 import { createOverlay, type BuildCursor, type Overlay } from './overlay';
 import { isBuildRevealEnabled, onBuildRevealSettingsChange } from './settings';
 import { adoptStageStyles } from './styles';
@@ -53,8 +61,6 @@ type BuildSteps = readonly BuildStep<BuildTarget>[];
 
 type RectReader = (el: HTMLElement) => DOMRect;
 
-type Edges = Pick<DOMRect, 'left' | 'top' | 'right' | 'bottom'>;
-
 type ResolvedOptions = Required<Omit<BuildRevealOptions, 'onComplete'>> &
   Pick<BuildRevealOptions, 'onComplete'>;
 
@@ -77,15 +83,12 @@ const INCLUDED_PART_SELECTOR = '[data-build-include]';
 const STATE_ATTRIBUTE = 'data-build-state';
 const PENDING_TARGET_SELECTOR = `[${STATE_ATTRIBUTE}='pending']`;
 const DURATION_PROPERTY = '--build-reveal-duration';
-const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
 const VISIBILITY_THRESHOLDS = Array.from({ length: 11 }, (_, step) => step / 10);
 const MIN_VISIBLE_RATIO = 0.3;
 const MIN_VISIBLE_VIEWPORT_SHARE = 0.5;
 const START_DELAY_MS = 120;
 const OBSTRUCTION_RETRY_MS = 150;
 const OBSTRUCTION_LIMIT_MS = 4000;
-const MAX_FRAME_GAP_MS = 48;
-const MIN_SPEED = 0.1;
 const CARET_THICKNESS = 2;
 const MIN_VISIBLE_SIZE = 8;
 const EMPTY_BOX: Box = { x: 0, y: 0, width: 0, height: 0 };
@@ -118,47 +121,10 @@ function cached<K, V>(read: (key: K) => V) {
   };
 }
 
-function clipsContent(el: Element) {
-  const { overflowX, overflowY } = getComputedStyle(el);
-  return overflowX !== 'visible' || overflowY !== 'visible';
-}
-
-function clippingAncestorsOf(
-  el: HTMLElement,
-  stage: HTMLElement,
-  isClipping: (el: Element) => boolean
-) {
-  const clips: HTMLElement[] = [];
-
-  for (let node = el.parentElement; node && node !== stage; node = node.parentElement) {
-    if (isClipping(node)) clips.push(node);
-  }
-
-  return clips;
-}
-
 function includedPartsOf(el: HTMLElement) {
   return [...el.querySelectorAll<HTMLElement>(INCLUDED_PART_SELECTOR)].filter(
     (part) => part.parentElement?.closest(TARGET_SELECTOR) === el
   );
-}
-
-function unionOf(a: Edges, b: Edges): Edges {
-  return {
-    left: Math.min(a.left, b.left),
-    top: Math.min(a.top, b.top),
-    right: Math.max(a.right, b.right),
-    bottom: Math.max(a.bottom, b.bottom)
-  };
-}
-
-function intersectionOf(a: Edges, b: Edges): Edges {
-  return {
-    left: Math.max(a.left, b.left),
-    top: Math.max(a.top, b.top),
-    right: Math.min(a.right, b.right),
-    bottom: Math.min(a.bottom, b.bottom)
-  };
 }
 
 function caretBox(caret: DOMRect, stageRect: DOMRect): Box {

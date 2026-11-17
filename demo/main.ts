@@ -1,5 +1,6 @@
 import { complementaryCursors, createBuildReveal } from 'build-reveal';
 import { defineBuildRevealElement } from 'build-reveal/element';
+import { createTour } from 'build-reveal/tour';
 import { markup } from './content';
 import { mountReactDemo } from './react-demo';
 import { mountVueDemo } from './vue-demo';
@@ -29,3 +30,18 @@ document.querySelectorAll<HTMLButtonElement>('[data-replay]').forEach((button) =
 
 mountReactDemo(document.querySelector('#react-root')!);
 mountVueDemo(document.querySelector('#vue-root')!);
+
+const tour = createTour(
+  [
+    { target: '#invoice-search', caption: 'Type what you are looking for.', type: 'Northwind' },
+    { target: '#invoice-filter', caption: 'Narrow the list down to this month.', click: true },
+    { target: '.invoice-table tbody tr', caption: 'Matching invoices show up here.' },
+    { target: '#invoice-export', caption: 'Export the list as a spreadsheet.', click: true }
+  ],
+  {
+    cursor: { label: 'Guide' },
+    onEnd: (completed) => console.info(`[tour] ${completed ? 'completed' : 'closed'}`)
+  }
+);
+
+document.querySelector('#start-tour')!.addEventListener('click', () => tour.start());

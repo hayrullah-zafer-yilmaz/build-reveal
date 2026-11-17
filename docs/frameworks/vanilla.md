@@ -16,7 +16,7 @@ const reveal = createBuildReveal(document.querySelector('#dashboard'), {
 With the script tag, the same functions are on `window.BuildReveal`:
 
 ```html
-<script src="https://unpkg.com/build-reveal@0.1"></script>
+<script src="https://unpkg.com/build-reveal@0.2"></script>
 
 <section id="dashboard">…</section>
 

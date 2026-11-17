@@ -141,3 +141,35 @@ button {
     padding: 1rem;
   }
 }
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.toolbar input {
+  flex: 1 1 12rem;
+  min-width: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font: inherit;
+  font-size: 0.875rem;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+.invoice-table th {
+  padding: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  color: #6b7280;
+  font-weight: 600;
+  text-align: left;
+}
+.invoice-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #f1f2f6;
+}

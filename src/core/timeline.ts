@@ -1,12 +1,25 @@
-export interface Point {
-  x: number;
-  y: number;
-}
+import {
+  arcBetween,
+  bottomRight,
+  clamp,
+  drawDuration,
+  easeOutCubic,
+  ENTER_DURATION,
+  ENTER_OFFSET,
+  EXIT_DRIFT,
+  EXIT_DURATION,
+  FRAME_FADE,
+  framed,
+  minimumJerk,
+  progressBetween,
+  shifted,
+  travelDuration,
+  type Box,
+  type Point
+} from './motion';
 
-export interface Box extends Point {
-  width: number;
-  height: number;
-}
+export type { Box, Point } from './motion';
+export { progressBetween } from './motion';
 
 export interface BuildPlanEntry<T> {
   target: T;
@@ -74,71 +87,21 @@ interface CursorLane<T> {
 
 export const REVEAL_DURATION = 380;
 
-const FRAME_PADDING = 6;
 const ROW_TOLERANCE = 16;
 const STAGGER = 70;
-const ENTER_DURATION = 400;
-const ENTER_OFFSET: Point = { x: 44, y: 60 };
-const EXIT_DURATION = 360;
-const EXIT_DRIFT: Point = { x: 14, y: 20 };
 const REENTRY_GAP = ENTER_DURATION + EXIT_DURATION;
-const FRAME_FADE = 240;
 const TRAILING = Math.max(FRAME_FADE, EXIT_DURATION);
 const HOLD = 120;
 const REVEAL_AT = 0.7;
 const TYPE_AT = 0.8;
 const CHILD_DELAY = 0.5;
-const ARC = 0.12;
 const SIZE_LABEL_AFTER = 0.3;
 const SIZE_LABEL_MIN_HEIGHT = 28;
 
-const TRAVEL = { base: 150, perPixel: 0.32, min: 200, max: 480 };
-const DRAW = { base: 200, perPixel: 0.16, min: 280, max: 480 };
 const TYPING = { perCharacter: 10, min: 220, max: 800 };
-
-const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
-
-export const progressBetween = (time: number, start: number, end: number) =>
-  end > start ? clamp((time - start) / (end - start), 0, 1) : Number(time >= end);
-
-const minimumJerk = (t: number) => t * t * t * (10 + t * (6 * t - 15));
-
-const easeOutCubic = (t: number) => 1 - (1 - t) ** 3;
-
-const framed = (box: Box): Box => ({
-  x: box.x - FRAME_PADDING,
-  y: box.y - FRAME_PADDING,
-  width: box.width + FRAME_PADDING * 2,
-  height: box.height + FRAME_PADDING * 2
-});
-
-const bottomRight = (box: Box): Point => ({ x: box.x + box.width, y: box.y + box.height });
-
-const shifted = (point: Point, by: Point, amount = 1): Point => ({
-  x: point.x + by.x * amount,
-  y: point.y + by.y * amount
-});
-
-const distance = (from: Point, to: Point) => Math.hypot(to.x - from.x, to.y - from.y);
-
-const travelDuration = (from: Point, to: Point) =>
-  clamp(TRAVEL.base + distance(from, to) * TRAVEL.perPixel, TRAVEL.min, TRAVEL.max);
-
-const drawDuration = (box: Box) =>
-  clamp(DRAW.base + Math.hypot(box.width, box.height) * DRAW.perPixel, DRAW.min, DRAW.max);
 
 const typingDuration = (length: number) =>
   clamp(length * TYPING.perCharacter, TYPING.min, TYPING.max);
-
-function arcBetween(from: Point, to: Point, t: number, bend: number): Point {
-  const eased = minimumJerk(t);
-  const lift = Math.sin(Math.PI * eased) * ARC * bend;
-
-  return {
-    x: from.x + (to.x - from.x) * eased - (to.y - from.y) * lift,
-    y: from.y + (to.y - from.y) * eased + (to.x - from.x) * lift
-  };
-}
 
 function readingOrder<T>(entries: BuildPlanEntry<T>[]) {
   const rows: BuildPlanEntry<T>[][] = [];

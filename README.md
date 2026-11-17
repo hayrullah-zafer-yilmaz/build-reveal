@@ -17,7 +17,8 @@ Make your page look like it is being built live in a design tool. Virtual cursor
 - **One attribute**: add `data-build` to what should appear. Nothing to configure.
 - **Unobtrusive**: plays when the content is in view, waits while something covers it, and stops as soon as the user interacts.
 - **Accessible**: respects `prefers-reduced-motion`, never leaves content hidden, and can be switched off globally.
-- **Small**: about 9 KB gzipped as a single script.
+- **Guided tours**: the same cursor can walk users through your real interface, step by step.
+- **Small**: about 8 KB gzipped for the reveal and 10 KB for tours, with no dependencies.
 
 ## Install
 
@@ -28,7 +29,7 @@ npm install build-reveal
 Or load it from a CDN, without a build step:
 
 ```html
-<script src="https://unpkg.com/build-reveal@0.1"></script>
+<script src="https://unpkg.com/build-reveal@0.2"></script>
 ```
 
 ## Quick start
@@ -113,10 +114,29 @@ You can also control a reveal: `play()` replays it, `finish()` ends it, `update(
 - **Stops** and shows everything as soon as the user clicks, taps, presses a key, moves focus into the stage or scrolls the stage out of view. Scrolling on a touch screen doesn't stop it.
 - **Skips** the animation if the user prefers reduced motion. Nothing is hidden then.
 
+## Guided tours
+
+The same cursor can show users around your real interface. It frames each element, explains it in a caption, and acts out a click or typing without touching your app:
+
+```js
+import { createTour } from 'build-reveal/tour';
+
+const tour = createTour([
+  { target: '#search', caption: 'Type the invoice you are looking for.', type: 'Invoice 2026' },
+  { target: '#filter', caption: 'Filter the list by date.', click: true },
+  { target: '#export', caption: 'Download it as a spreadsheet.' }
+]);
+
+tour.start();
+```
+
+Users move through it with Next, Back and Close, or the keyboard. See [Guided tours](docs/tour.md).
+
 ## Documentation
 
 - [Getting started](docs/getting-started.md)
 - [Marking content](docs/markup.md)
+- [Guided tours](docs/tour.md)
 - Frameworks: [JavaScript](docs/frameworks/vanilla.md) · [Web Component](docs/frameworks/web-component.md) · [React & Next.js](docs/frameworks/react.md) · [Vue & Nuxt](docs/frameworks/vue.md) · [Angular](docs/frameworks/angular.md) · [Svelte](docs/frameworks/svelte.md)
 - [API reference](docs/api.md)
 - [Theming](docs/theming.md)

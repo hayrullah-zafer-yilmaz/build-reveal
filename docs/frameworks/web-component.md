@@ -7,7 +7,7 @@
 With the script tag, it registers itself:
 
 ```html
-<script src="https://unpkg.com/build-reveal@0.1"></script>
+<script src="https://unpkg.com/build-reveal@0.2"></script>
 ```
 
 With a bundler, register it once when your app starts, before the element is rendered:

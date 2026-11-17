@@ -8,9 +8,10 @@
 | `build-reveal/element` | `defineBuildRevealElement`, `BUILD_REVEAL_COMPLETE_EVENT` and the `BuildRevealElement` type |
 | `build-reveal/react` | `BuildReveal`, `useBuildReveal`, their types, and everything from `build-reveal` |
 | `build-reveal/vue` | `BuildReveal`, `vBuildReveal`, and everything from `build-reveal` |
-| `<script src="https://unpkg.com/build-reveal@0.1">` | Registers `<build-reveal>` and puts everything else on `window.BuildReveal` |
+| `build-reveal/tour` | `createTour` and its types |
+| `<script src="https://unpkg.com/build-reveal@0.2">` | Registers `<build-reveal>` and puts everything else, `createTour` included, on `window.BuildReveal` |
 
-The package ships ES modules and CommonJS with TypeScript types. A framework entry never loads the other frameworks.
+The package ships ES modules and CommonJS with TypeScript types. A framework entry never loads the other frameworks, and the reveal and the tour don't load each other.
 
 ## createBuildReveal(stage, options?)
 
@@ -124,6 +125,43 @@ See the [React guide](frameworks/react.md).
 
 See the [Vue guide](frameworks/vue.md).
 
+## Tour
+
+```ts
+function createTour(steps: TourStep[], options?: TourOptions): Tour;
+```
+
+`createTour` doesn't touch the page until `start()` is called.
+
+| `TourStep` field | Type | Description |
+| --- | --- | --- |
+| `target` | `string \| Element \| () => Element \| null` | A CSS selector, an element, or a function that returns one. An invalid selector throws when the tour is created. |
+| `caption` | `string` | Text of the step. |
+| `click` | `boolean` | Act out a click. Nothing is clicked. |
+| `type` | `string` | Act out typing this text, in the field or in the panel. The field's value never changes. |
+
+| `TourOptions` field | Default | Description |
+| --- | --- | --- |
+| `autoplay` | `false` | Advance after a reading delay. Waits while the pointer is over the panel; turns off after Back. |
+| `speed` | `1` | Playback speed multiplier. |
+| `cursor` | | A [`BuildCursor`](#buildcursor): `label`, `color`, `hue`. |
+| `labels` | English | `next`, `back`, `done`, `close`, `tour` (the panel's accessible name) and `progress(step, total)`. |
+| `onStep(index)` | | Called when a step is shown, before its target is looked for. |
+| `onEnd(completed)` | | Called when the tour ends: `true` after the last step, `false` when closed early. Not called by `destroy()`. |
+
+| `Tour` member | Description |
+| --- | --- |
+| `start(index?)` | Starts at the first step, or at `index`. While running, it moves to `index`. Ends any other running tour. |
+| `next()` | Next step, or ends the tour on the last one. |
+| `back()` | Previous step. |
+| `goTo(index)` | Moves to a step. |
+| `stop()` | Ends the tour and calls `onEnd(false)`. |
+| `destroy()` | Removes the tour from the page right away, without calling `onEnd`. |
+| `step` | Index of the current step, or `-1` when the tour isn't running. |
+| `active` | Whether the tour is running. |
+
+A target that isn't on the page is waited for up to 3 seconds, then the step is skipped. See the [Guided tours guide](tour.md).
+
 ## Types
 
-`BuildRevealOptions`, `BuildReveal`, `BuildRevealPhase`, `BuildRevealTrigger`, `BuildCursor`, `BuildRevealElement`, `BuildRevealHandle` and `BuildRevealProps`.
+`BuildRevealOptions`, `BuildReveal`, `BuildRevealPhase`, `BuildRevealTrigger`, `BuildCursor`, `BuildRevealElement`, `BuildRevealHandle`, `BuildRevealProps`, `Tour`, `TourStep`, `TourOptions`, `TourLabels` and `TourTarget`.

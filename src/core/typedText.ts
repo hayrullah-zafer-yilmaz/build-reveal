@@ -1,11 +1,9 @@
+import { countReached, cumulativeShares, keystrokeWeight, WHITESPACE } from './keystrokes';
+
 const UNTYPED_HIGHLIGHT = 'build-reveal-untyped';
 const MASKED_ATTRIBUTE = 'data-build-masked';
 const TYPED_WIDTH = '--build-reveal-typed';
 const NON_TEXT = 'svg, style, script, [aria-hidden="true"], [data-build-skip], .material-icons, [class*="material-symbols"]';
-const WHITESPACE = /\s/;
-const PUNCTUATION = /[.,;:!?]/;
-const WORD_PAUSE = 1.8;
-const PUNCTUATION_PAUSE = 2.6;
 
 interface TextPosition {
   node: Text;
@@ -56,39 +54,6 @@ function textNodesOf(root: HTMLElement) {
   const nodes: Text[] = [];
   while (walker.nextNode()) nodes.push(walker.currentNode as Text);
   return nodes;
-}
-
-function keystrokeJitter(index: number) {
-  const noise = Math.sin(index * 12.9898) * 43758.5453;
-  return 0.7 + 0.6 * (noise - Math.floor(noise));
-}
-
-function keystrokeWeight(previous: string, index: number) {
-  const pause = PUNCTUATION.test(previous)
-    ? PUNCTUATION_PAUSE
-    : WHITESPACE.test(previous)
-      ? WORD_PAUSE
-      : 1;
-  return pause * keystrokeJitter(index);
-}
-
-function cumulativeShares(weights: number[]) {
-  const total = weights.reduce((sum, weight) => sum + weight, 0);
-  let reached = 0;
-  return weights.map((weight) => (reached += weight) / total);
-}
-
-function countReached(thresholds: number[], progress: number) {
-  let low = 0;
-  let high = thresholds.length;
-
-  while (low < high) {
-    const middle = (low + high) >> 1;
-    if (thresholds[middle]! <= progress) low = middle + 1;
-    else high = middle;
-  }
-
-  return low;
 }
 
 function paintsTextWithBackground(el: Element) {

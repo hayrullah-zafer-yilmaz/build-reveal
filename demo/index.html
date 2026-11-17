@@ -46,6 +46,30 @@
         </div>
         <div id="vue-root"></div>
       </section>
+
+      <section class="panel">
+        <div class="panel__head">
+          <h2>Guided tour</h2>
+          <button type="button" id="start-tour">Start tour</button>
+        </div>
+        <div class="stage invoices">
+          <div class="toolbar">
+            <input id="invoice-search" type="search" placeholder="Search invoices" aria-label="Search invoices" />
+            <button type="button" id="invoice-filter">This month</button>
+            <button type="button" id="invoice-export">Export</button>
+          </div>
+          <table class="invoice-table">
+            <thead>
+              <tr><th>Invoice</th><th>Customer</th><th>Amount</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>INV-2026-118</td><td>Northwind</td><td>$4,200</td></tr>
+              <tr><td>INV-2026-117</td><td>Contoso</td><td>$1,980</td></tr>
+              <tr><td>INV-2026-116</td><td>Fabrikam</td><td>$760</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </main>
 
     <script type="module" src="./main.ts"></script>

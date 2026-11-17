@@ -54,3 +54,7 @@ Hue shifts use [relative color syntax](https://developer.mozilla.org/docs/Web/CS
 ## Speed
 
 `speed` scales the whole animation, including the fade-in: `speed: 2` is twice as fast and `speed: 0.5` half as fast.
+
+## Guided tours
+
+A tour is drawn above the whole page rather than inside a stage, so set its properties on `:root` or `body`. Besides the ones above, tours use `--build-reveal-text` for the panel's text color and `--build-reveal-tour-z-index` for their stacking order. See [Guided tours](tour.md#theming).

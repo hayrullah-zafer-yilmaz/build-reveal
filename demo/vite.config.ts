@@ -12,7 +12,7 @@ export default defineConfig({
   },
   resolve: {
     alias: [
-      { find: /^build-reveal\/(element|react|vue)$/, replacement: source('$1.ts') },
+      { find: /^build-reveal\/(element|react|vue|tour)$/, replacement: source('$1.ts') },
       { find: /^build-reveal$/, replacement: source('index.ts') }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "name": "build-reveal",
-  "version": "0.1.1",
-  "description": "Framework-agnostic \"design tool\" reveal animation: virtual cursors draw selection frames around your elements and type their text in.",
+  "version": "0.2.0",
+  "description": "Design-tool style animations for any web page: virtual cursors draw selection frames, type your content in, and give guided tours of your interface.",
   "license": "MIT",
   "author": "Hayrullah Zafer Yılmaz",
   "homepage": "https://hayrullah-zafer-yilmaz.github.io/build-reveal/",
@@ -63,6 +63,16 @@
         "default": "./dist/vue.cjs"
       }
     },
+    "./tour": {
+      "import": {
+        "types": "./dist/tour.d.ts",
+        "default": "./dist/tour.js"
+      },
+      "require": {
+        "types": "./dist/tour.d.cts",
+        "default": "./dist/tour.cjs"
+      }
+    },
     "./package.json": "./package.json"
   },
   "scripts": {
@@ -86,7 +96,10 @@
     "react",
     "vue",
     "angular",
-    "svelte"
+    "svelte",
+    "product-tour",
+    "onboarding",
+    "walkthrough"
   ],
   "peerDependencies": {
     "react": ">=17",
