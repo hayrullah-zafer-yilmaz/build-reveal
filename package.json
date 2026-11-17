@@ -1,6 +1,6 @@
 {
   "name": "build-reveal",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Design-tool style animations for any web page: virtual cursors draw selection frames, type your content in, and give guided tours of your interface.",
   "license": "MIT",
   "author": "Hayrullah Zafer Yılmaz",

@@ -2,6 +2,10 @@
 
 A virtual cursor walks your users through the real page. It moves to an element, draws a selection frame around it, explains it in a caption, and can act out a click or typing without touching your app.
 
+<p align="center">
+  <img src="assets/tour.gif" width="800" alt="A cursor labeled Guide types Northwind into a search field, clicks This month, points at a table row and clicks Export, with a caption and Back and Next buttons at each step">
+</p>
+
 ```js
 import { createTour } from 'build-reveal/tour';
 

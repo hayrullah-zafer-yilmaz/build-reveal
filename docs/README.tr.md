@@ -116,6 +116,10 @@ Animasyonu kodla da yönetebilirsiniz: `play()` yeniden oynatır, `finish()` hem
 
 ## Rehberli turlar
 
+<p align="center">
+  <img src="assets/tour.gif" width="800" alt="Guide etiketli bir imleç arama alanına Northwind yazıyor, This month butonuna tıklıyor, bir tablo satırını gösteriyor ve Export'a tıklıyor; her adımda bir açıklama ile Geri ve İleri butonları görünüyor">
+</p>
+
 Aynı imleç, kullanıcılarınıza gerçek arayüzünüzü tanıtabilir. Her öğenin etrafına çerçeve çizer, bir açıklamayla anlatır ve tıklamayı ya da yazmayı canlandırır; uygulamanıza hiçbir şekilde dokunmaz:
 
 ```js

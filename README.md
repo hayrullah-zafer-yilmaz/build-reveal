@@ -116,6 +116,10 @@ You can also control a reveal: `play()` replays it, `finish()` ends it, `update(
 
 ## Guided tours
 
+<p align="center">
+  <img src="docs/assets/tour.gif" width="800" alt="A cursor labeled Guide types Northwind into a search field, clicks This month, points at a table row and clicks Export, with a caption and Back and Next buttons at each step">
+</p>
+
 The same cursor can show users around your real interface. It frames each element, explains it in a caption, and acts out a click or typing without touching your app:
 
 ```js
