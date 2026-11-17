@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>build-reveal</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./demo.css" />
+  </head>
+  <body>
+    <header class="intro">
+      <h1>build-reveal</h1>
+      <p>
+        One animation, any framework. Each panel below uses a different integration.
+        <a href="https://github.com/hayrullah-zafer-yilmaz/build-reveal">Source on GitHub</a>
+      </p>
+    </header>
+
+    <main class="panels">
+      <section class="panel">
+        <div class="panel__head">
+          <h2>Vanilla JS</h2>
+          <button type="button" data-replay="vanilla">Replay</button>
+        </div>
+        <div id="vanilla-stage" class="stage"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__head">
+          <h2>Web Component</h2>
+          <button type="button" data-replay="element">Replay</button>
+        </div>
+        <build-reveal id="element-stage" class="stage" cursors="2" speed="1.2"></build-reveal>
+      </section>
+
+      <section class="panel">
+        <div class="panel__head">
+          <h2>React</h2>
+        </div>
+        <div id="react-root"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__head">
+          <h2>Vue</h2>
+        </div>
+        <div id="vue-root"></div>
+      </section>
+    </main>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
