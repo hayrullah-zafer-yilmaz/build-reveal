@@ -8,7 +8,7 @@ Make your page look like it is being built live in a design tool. Virtual cursor
 
 <p align="center">
   <a href="https://hayrullah-zafer-yilmaz.github.io/build-reveal/">Live demo</a> ·
-  <a href="README.tr.md">Türkçe</a> ·
+  <a href="docs/README.tr.md">Türkçe</a> ·
   <a href="docs/README.md">Documentation</a> ·
   <a href="CHANGELOG.md">Changelog</a>
 </p>

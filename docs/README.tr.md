@@ -3,14 +3,14 @@
 Sayfanız bir tasarım aracında canlı olarak hazırlanıyormuş gibi görünsün. Sanal imleçler ekrana gelir, her öğenin etrafına bir seçim çerçevesi çizer, öğeyi görünür hale getirir ve metnini harf harf yazar.
 
 <p align="center">
-  <img src="docs/assets/demo.gif" width="800" alt="Etiketli üç imleç bir başlık, istatistik kartları ve etiketlerin etrafına seçim çerçevesi çizip metinlerini yazıyor">
+  <img src="assets/demo.gif" width="800" alt="Etiketli üç imleç bir başlık, istatistik kartları ve etiketlerin etrafına seçim çerçevesi çizip metinlerini yazıyor">
 </p>
 
 <p align="center">
   <a href="https://hayrullah-zafer-yilmaz.github.io/build-reveal/">Canlı demo</a> ·
-  <a href="README.md">English</a> ·
-  <a href="docs/README.md">Dokümantasyon (İngilizce)</a> ·
-  <a href="CHANGELOG.md">Değişiklikler</a>
+  <a href="../README.md">English</a> ·
+  <a href="README.md">Dokümantasyon (İngilizce)</a> ·
+  <a href="../CHANGELOG.md">Değişiklikler</a>
 </p>
 
 - **Her projede çalışır**: bağımlılığı olmayan bir çekirdek, React ve Vue bileşenleri, Angular, Svelte ya da düz HTML için `<build-reveal>` elementi.
@@ -89,7 +89,7 @@ import { BuildReveal } from 'build-reveal/vue';
 </template>
 ```
 
-**Angular, Svelte ve diğerleri**: [Angular](docs/frameworks/angular.md), [Svelte](docs/frameworks/svelte.md) ya da [Web Component](docs/frameworks/web-component.md) rehberine bakın.
+**Angular, Svelte ve diğerleri**: [Angular](frameworks/angular.md), [Svelte](frameworks/svelte.md) ya da [Web Component](frameworks/web-component.md) rehberine bakın.
 
 Bu kadar: stage ekrana girdiğinde animasyon oynar.
 
@@ -105,7 +105,7 @@ Bu kadar: stage ekrana girdiğinde animasyon oynar.
 | `disabled` | `false` | Animasyonu atlar ve her şeyi gösterir. |
 | `onComplete` | | Animasyon bittiğinde ya da yarıda kesildiğinde çağrılır. |
 
-Animasyonu kodla da yönetebilirsiniz: `play()` yeniden oynatır, `finish()` hemen bitirir, `update(options)` seçenekleri değiştirir, `destroy()` kaldırır. Ayrıntılar için [API referansı](docs/api.md).
+Animasyonu kodla da yönetebilirsiniz: `play()` yeniden oynatır, `finish()` hemen bitirir, `update(options)` seçenekleri değiştirir, `destroy()` kaldırır. Ayrıntılar için [API referansı](api.md).
 
 ## Nasıl davranır?
 
@@ -115,13 +115,13 @@ Animasyonu kodla da yönetebilirsiniz: `play()` yeniden oynatır, `finish()` hem
 
 ## Dokümantasyon (İngilizce)
 
-- [Başlangıç](docs/getting-started.md)
-- [İçeriği işaretleme](docs/markup.md)
-- Framework'ler: [JavaScript](docs/frameworks/vanilla.md) · [Web Component](docs/frameworks/web-component.md) · [React ve Next.js](docs/frameworks/react.md) · [Vue ve Nuxt](docs/frameworks/vue.md) · [Angular](docs/frameworks/angular.md) · [Svelte](docs/frameworks/svelte.md)
-- [API referansı](docs/api.md)
-- [Tema ve renkler](docs/theming.md)
-- [Erişilebilirlik](docs/accessibility.md)
-- [SSS ve sorun giderme](docs/faq.md)
+- [Başlangıç](getting-started.md)
+- [İçeriği işaretleme](markup.md)
+- Framework'ler: [JavaScript](frameworks/vanilla.md) · [Web Component](frameworks/web-component.md) · [React ve Next.js](frameworks/react.md) · [Vue ve Nuxt](frameworks/vue.md) · [Angular](frameworks/angular.md) · [Svelte](frameworks/svelte.md)
+- [API referansı](api.md)
+- [Tema ve renkler](theming.md)
+- [Erişilebilirlik](accessibility.md)
+- [SSS ve sorun giderme](faq.md)
 
 ## Tarayıcı desteği
 
@@ -140,4 +140,4 @@ npm run check:package  # derlenen paketi bir kullanıcı gibi yükleyip kontrol 
 
 ## Lisans
 
-[MIT](LICENSE) © Hayrullah Zafer Yılmaz
+[MIT](../LICENSE) © Hayrullah Zafer Yılmaz

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1 (2026-11-17)
+
+- The npm package page shows the English README. The Turkish README moved to `docs/README.tr.md`.
+
 ## 0.1.0 (2026-11-17)
 
 First release.

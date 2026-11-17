@@ -1,6 +1,6 @@
 {
   "name": "build-reveal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Framework-agnostic \"design tool\" reveal animation: virtual cursors draw selection frames around your elements and type their text in.",
   "license": "MIT",
   "author": "Hayrullah Zafer Yılmaz",
