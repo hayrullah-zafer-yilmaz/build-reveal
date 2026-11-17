@@ -1,5 +1,11 @@
 # build-reveal
 
+[![npm](https://img.shields.io/npm/v/build-reveal)](https://www.npmjs.com/package/build-reveal)
+[![CI](https://github.com/hayrullah-zafer-yilmaz/build-reveal/actions/workflows/ci.yml/badge.svg)](https://github.com/hayrullah-zafer-yilmaz/build-reveal/actions/workflows/ci.yml)
+[![Paket boyutu](https://img.shields.io/bundlejs/size/build-reveal)](https://bundlejs.com/?q=build-reveal)
+![TypeScript tipleri](https://img.shields.io/npm/types/build-reveal)
+[![Lisans](https://img.shields.io/npm/l/build-reveal)](../LICENSE)
+
 Sayfanız bir tasarım aracında canlı olarak hazırlanıyormuş gibi görünsün. Sanal imleçler ekrana gelir, her öğenin etrafına bir seçim çerçevesi çizer, öğeyi görünür hale getirir ve metnini harf harf yazar.
 
 <p align="center">

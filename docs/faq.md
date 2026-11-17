@@ -52,6 +52,12 @@ While the animation plays, its overlay is the stage's last child. For the stage'
 
 No. The content is in the HTML the whole time; the animation only changes how it's painted.
 
+## Does it work with a strict Content Security Policy?
+
+Yes. build-reveal doesn't add `<style>` or `<script>` elements, inline event handlers or HTML strings to your page. Its styles are added as constructable stylesheets, and all text is set as plain text. It works with `script-src 'self'`, `style-src 'self'` and Trusted Types (`require-trusted-types-for 'script'`), without `'unsafe-inline'` or a nonce.
+
+Because text is never parsed as HTML, tour captions that come from user content can't run script: markup in them shows up as text.
+
 ## How do I use it in tests?
 
 - **Unit tests in jsdom** (Jest, Vitest): jsdom has no `IntersectionObserver`, so the animation is skipped and everything is visible. If your setup mocks `IntersectionObserver`, call `setBuildRevealEnabled(false)` in it.

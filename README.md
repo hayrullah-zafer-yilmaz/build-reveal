@@ -1,5 +1,11 @@
 # build-reveal
 
+[![npm](https://img.shields.io/npm/v/build-reveal)](https://www.npmjs.com/package/build-reveal)
+[![CI](https://github.com/hayrullah-zafer-yilmaz/build-reveal/actions/workflows/ci.yml/badge.svg)](https://github.com/hayrullah-zafer-yilmaz/build-reveal/actions/workflows/ci.yml)
+[![Bundle size](https://img.shields.io/bundlejs/size/build-reveal)](https://bundlejs.com/?q=build-reveal)
+![Types](https://img.shields.io/npm/types/build-reveal)
+[![License](https://img.shields.io/npm/l/build-reveal)](LICENSE)
+
 Make your page look like it is being built live in a design tool. Virtual cursors fly in, drag a selection frame around each element, fade it in and type its text.
 
 <p align="center">
